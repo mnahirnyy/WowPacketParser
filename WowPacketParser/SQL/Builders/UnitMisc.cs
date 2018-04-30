@@ -511,12 +511,12 @@ namespace WowPacketParser.SQL.Builders
 
                 if (Settings.UseDBC)
                 {
-                    var creatureDiff = DBC.DBC.CreatureDifficulty.Where(diff => diff.Value.CreatureID == unit.Key.GetEntry());
+                    var creatureDiff = DBC.DBC.CreatureDifficultyEntry.Rows.Where(diff => diff.CreatureID == unit.Key.GetEntry());
                     if (creatureDiff.Any())
                     {
-                        template.MinLevel = creatureDiff.Select(lv => lv.Value.MinLevel).First();
-                        template.MaxLevel = creatureDiff.Select(lv => lv.Value.MaxLevel).First();
-                        template.Faction  = creatureDiff.Select(lv => lv.Value.FactionTemplateID).First();
+                        template.MinLevel = creatureDiff.Select(lv => lv.MinLevel).First();
+                        template.MaxLevel = creatureDiff.Select(lv => lv.MaxLevel).First();
+                        template.Faction  = creatureDiff.Select(lv => lv.FactionTemplateID).First();
                     }
                 }
 

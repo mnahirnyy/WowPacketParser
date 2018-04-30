@@ -7,7 +7,7 @@ using MySql.Data.MySqlClient;
 using WowPacketParser.Enums;
 using WowPacketParser.Misc;
 using WowPacketParser.Store;
-using WowPacketParser.DBC.Structures;
+using WDBXLib.Definitions.Legion_7_2_0;
 
 namespace WowPacketParser.SQL
 {
@@ -102,8 +102,9 @@ namespace WowPacketParser.SQL
                     if (!Settings.UseDBC)
                         continue;
 
-                    var broadcastText = new BroadcastTextEntry()
+                    var broadcastText = new BroadcastText()
                     {
+                        ID = id,
                         MaleText = maleText,
                         FemaleText = femaleText,
 
@@ -124,10 +125,10 @@ namespace WowPacketParser.SQL
                     broadcastText.SoundID[1] = Convert.ToUInt32(reader["SoundID2"]);
                     broadcastText.PlayerConditionID = Convert.ToUInt32(reader["PlayerConditionID"]);
 
-                    if (!DBC.DBC.BroadcastText.ContainsKey(id))
-                        DBC.DBC.BroadcastText.Add(id, broadcastText);
+                    if (!DBC.DBC.BroadcastTextEntry.Rows.ContainsKey(id))
+                        DBC.DBC.BroadcastTextEntry.Rows.Add(broadcastText);
                     else
-                        DBC.DBC.BroadcastText[id] = broadcastText;
+                        DBC.DBC.BroadcastTextEntry.Rows[id] = broadcastText;
                 }
             }
         }

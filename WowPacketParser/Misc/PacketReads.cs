@@ -188,7 +188,7 @@ namespace WowPacketParser.Misc
                 {
                     spellInfo += Environment.NewLine;
                     var effect = DBC.DBC.SpellEffectStores[tuple];
-                    var difficulty = DBC.DBC.Difficulty.ContainsKey((int)effect.DifficultyID) ? DBC.DBC.Difficulty[(int)effect.DifficultyID].Name : "DIFFICULTY_NONE";
+                    var difficulty = DBC.DBC.DifficultyEntry.Rows.ContainsKey((int)effect.DifficultyID) ? DBC.DBC.DifficultyEntry.Rows[(int)effect.DifficultyID].Name : "DIFFICULTY_NONE";
                     var aura = (AuraTypeLegion)effect.EffectAura;
                     var misc = effect.EffectMiscValue[0];
 

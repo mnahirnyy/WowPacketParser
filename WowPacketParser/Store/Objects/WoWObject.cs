@@ -43,11 +43,11 @@ namespace WowPacketParser.Store.Objects
 
         public int GetDefaultSpawnTime(uint difficultyID)
         {
-             if (Settings.UseDBC && DBC.DBC.Map != null)
+             if (Settings.UseDBC && DBC.DBC.MapEntry != null)
              {
-                 if (DBC.DBC.Map.ContainsKey((int)Map))
+                 if (DBC.DBC.MapEntry.Rows.ContainsKey((int)Map))
                  {
-                     switch (DBC.DBC.Map[(int)Map].InstanceType)
+                     switch (DBC.DBC.MapEntry.Rows[(int)Map].InstanceType)
                      {
                         case 0: // MAP_COMMON
                             return 120;

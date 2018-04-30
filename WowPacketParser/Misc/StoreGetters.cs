@@ -20,48 +20,48 @@ namespace WowPacketParser.Misc
                 switch (type)
                 {
                     case StoreNameType.Achievement:
-                        if (DBC.DBC.Achievement.ContainsKey(entry))
-                            return DBC.DBC.Achievement[entry].Title;
+                        if (DBC.DBC.AchievementEntry.Rows.ContainsKey(entry))
+                            return DBC.DBC.AchievementEntry.Rows[entry].Title;
                         break;
                     case StoreNameType.Area:
-                        if (DBC.DBC.AreaTable.ContainsKey(entry))
-                            return DBC.DBC.AreaTable[entry].AreaName;
+                        if (DBC.DBC.AreaTableEntry.Rows.ContainsKey(entry))
+                            return DBC.DBC.AreaTableEntry.Rows[entry].AreaName;
                         break;
                     case StoreNameType.Unit:
-                        if (DBC.DBC.Creature.ContainsKey(entry))
-                            return DBC.DBC.Creature[entry].Name;
+                        if (DBC.DBC.CreatureEntry.Rows.ContainsKey(entry))
+                            return DBC.DBC.CreatureEntry.Rows[entry].Name;
                         break;
                     case StoreNameType.CreatureFamily:
-                        if (DBC.DBC.CreatureFamily.ContainsKey(entry))
-                            return DBC.DBC.CreatureFamily[entry].Name;
+                        if (DBC.DBC.CreatureFamilyEntry.Rows.ContainsKey(entry))
+                            return DBC.DBC.CreatureFamilyEntry.Rows[entry].Name;
                         break;
                     case StoreNameType.Criteria:
                         if (DBC.DBC.CriteriaStores.ContainsKey((ushort)entry))
                             return DBC.DBC.CriteriaStores[(ushort)entry];
                         break;
                     case StoreNameType.Difficulty:
-                        if (DBC.DBC.Difficulty.ContainsKey(entry))
-                            return DBC.DBC.Difficulty[entry].Name;
+                        if (DBC.DBC.DifficultyEntry.Rows.ContainsKey(entry))
+                            return DBC.DBC.DifficultyEntry.Rows[entry].Name;
                         break;
                     case StoreNameType.Faction:
                         if (DBC.DBC.FactionStores.ContainsKey((uint)entry))
                             return DBC.DBC.FactionStores[(uint)entry].Name;
                         break;
                     case StoreNameType.Item:
-                        if (DBC.DBC.ItemSparse.ContainsKey(entry))
-                            return DBC.DBC.ItemSparse[entry].Name;
+                        if (DBC.DBC.ItemSparseEntry.Rows.ContainsKey(entry))
+                            return DBC.DBC.ItemSparseEntry.Rows[entry].Name;
                         break;
                     case StoreNameType.Map:
-                        if (DBC.DBC.Map.ContainsKey(entry))
-                            return DBC.DBC.Map[entry].MapName;
+                        if (DBC.DBC.MapEntry.Rows.ContainsKey(entry))
+                            return DBC.DBC.MapEntry.Rows[entry].MapName;
                         break;
                     case StoreNameType.Sound:
-                        if (DBC.DBC.SoundKit.ContainsKey(entry))
-                            return DBC.DBC.SoundKit[entry].Name;
+                        if (DBC.DBC.SoundKitEntry.Rows.ContainsKey(entry))
+                            return DBC.DBC.SoundKitEntry.Rows[entry].Name;
                         break;
                     case StoreNameType.Spell:
-                        if (DBC.DBC.Spell.ContainsKey(entry))
-                            return DBC.DBC.Spell[entry].Name;
+                        if (DBC.DBC.SpellEntry.Rows.ContainsKey(entry))
+                            return DBC.DBC.SpellEntry.Rows[entry].Name;
                         break;
                     case StoreNameType.Zone:
                         if (DBC.DBC.Zones.ContainsKey((uint)entry))
