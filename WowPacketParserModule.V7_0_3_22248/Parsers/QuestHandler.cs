@@ -368,6 +368,17 @@ namespace WowPacketParserModule.V7_0_3_22248.Parsers
             packet.ReadWoWString("PortraitTurnInName", portraitTurnInNameLen);
 
             Storage.QuestOfferRewards.Add(questOfferReward, packet.TimeSpan);
+
+            if (BinaryPacketReader.GetLocale() != LocaleConstant.enUS && questOfferReward.RewardText != string.Empty)
+            {
+                QuestOfferRewardLocale localesQuestOfferReward = new QuestOfferRewardLocale
+                {
+                    ID = (uint)id,
+                    RewardText = questOfferReward.RewardText
+                };
+
+                Storage.LocalesQuestOfferRewards.Add(localesQuestOfferReward, packet.TimeSpan);
+            }
         }
 
         [Parser(Opcode.SMSG_QUEST_GIVER_QUEST_DETAILS)]
