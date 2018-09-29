@@ -654,6 +654,17 @@ namespace WowPacketParserModule.V6_0_2_19033.Parsers
             }
 
             Storage.QuestGreetings.Add(questGreeting, packet.TimeSpan);
+
+            if (BinaryPacketReader.GetLocale() != LocaleConstant.enUS && questGreeting.Greeting != string.Empty)
+            {
+                QuestGreetingLocale localesQuestGreeting = new QuestGreetingLocale
+                {
+                    ID = questGreeting.ID,
+                    Type = questGreeting.Type,
+                    Greeting = questGreeting.Greeting
+                };
+                Storage.LocalesQuestGreeting.Add(localesQuestGreeting, packet.TimeSpan);
+            }
         }
 
         [Parser(Opcode.SMSG_QUEST_GIVER_REQUEST_ITEMS)]
@@ -705,6 +716,16 @@ namespace WowPacketParserModule.V6_0_2_19033.Parsers
             questRequestItems.CompletionText = packet.ReadWoWString("CompletionText", bits16);
 
             Storage.QuestRequestItems.Add(questRequestItems, packet.TimeSpan);
+
+            if (BinaryPacketReader.GetLocale() != LocaleConstant.enUS && questRequestItems.CompletionText != string.Empty)
+            {
+                QuestRequestItemsLocale localesQuestRequestItems = new QuestRequestItemsLocale
+                {
+                    ID = (uint)id,
+                    CompletionText = questRequestItems.CompletionText
+                };
+                Storage.LocalesQuestRequestItems.Add(localesQuestRequestItems, packet.TimeSpan);
+            }
         }
 
         [Parser(Opcode.SMSG_QUEST_UPDATE_COMPLETE)]
