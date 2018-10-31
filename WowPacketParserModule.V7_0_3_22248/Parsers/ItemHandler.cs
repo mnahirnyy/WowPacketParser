@@ -119,5 +119,13 @@ namespace WowPacketParserModule.V7_0_3_22248.Parsers
             packet.ReadInt32("Flags");
             packet.ReadInt32("PurchaseTime");
         }
+
+        [Parser(Opcode.SMSG_ITEM_CHANGED)]
+        public static void HandleItemChanged(Packet packet)
+        {
+            packet.ReadPackedGuid128("Player");
+            V6_0_2_19033.Parsers.ItemHandler.ReadItemInstance(packet, "ItemInstanceBefore");
+            V6_0_2_19033.Parsers.ItemHandler.ReadItemInstance(packet, "ItemInstanceAfter");
+        }
     }
 }
